@@ -1,0 +1,213 @@
+/**
+ * Cordova Pro GUI - Custom Styles
+ * Additional styles for specific components
+ */
+
+/* ============================================================
+   PROJECT DETAILS
+   ============================================================ */
+.project-details {
+    display: grid;
+    gap: 8px;
+}
+
+.detail-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.detail-label {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.detail-value {
+    font-weight: 500;
+    word-break: break-word;
+}
+
+/* ============================================================
+   PLATFORM ITEMS
+   ============================================================ */
+.platform-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.platform-item i:first-child {
+    color: var(--success);
+}
+
+.platform-item span {
+    flex: 1;
+    font-weight: 500;
+}
+
+.platform-item .btn-danger {
+    padding: 4px 8px;
+    font-size: 12px;
+}
+
+/* ============================================================
+   BADGES
+   ============================================================ */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge-success {
+    background: rgba(34, 197, 94, 0.1);
+    color: var(--success);
+}
+
+.badge-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+.badge-danger {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.badge-info {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--info);
+}
+
+/* ============================================================
+   BUILD OUTPUT
+   ============================================================ */
+.build-output {
+    margin-top: 16px;
+}
+
+.build-output h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-secondary);
+}
+
+.build-output pre {
+    background: #0f172a;
+    color: #e2e8f0;
+    padding: 16px;
+    border-radius: 8px;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    max-height: 200px;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* ============================================================
+   EMPTY STATE
+   ============================================================ */
+.empty-state {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.empty-state i {
+    font-size: 48px;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.empty-state p {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+.empty-state .text-muted {
+    font-size: 14px;
+}
+
+/* ============================================================
+   PREFERENCES EDITOR
+   ============================================================ */
+.preferences-editor {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px;
+}
+
+.pref-item {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 8px;
+    align-items: center;
+}
+
+.pref-item .form-control {
+    flex: 1;
+}
+
+.pref-item .btn-danger {
+    padding: 8px 12px;
+}
+
+/* ============================================================
+   RESPONSIVE FIXES
+   ============================================================ */
+@media (max-width: 768px) {
+    .header-right .project-info {
+        display: none;
+    }
+    
+    .form-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .form-actions .btn {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .donation-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .donation-item code {
+        width: 100%;
+        word-break: break-all;
+    }
+}
+
+/* ============================================================
+   PRINT STYLES
+   ============================================================ */
+@media print {
+    .sidebar,
+    .main-header,
+    .btn,
+    .nav-item {
+        display: none !important;
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+    }
+    
+    .panel {
+        display: block !important;
+    }
+}

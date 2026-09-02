@@ -1,0 +1,38 @@
+<section class="panel" id="panel-marketplace">
+    <div class="panel-header">
+        <h2><i class="fas fa-store"></i> Plugin Marketplace</h2>
+        <p>Discover and install plugins from the Cordova ecosystem</p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="marketplace-search">
+                <div class="input-group" style="display:flex; gap:8px; margin-bottom:12px;">
+                    <input type="text" class="form-control" id="marketplaceSearch" 
+                           placeholder="Search plugins by name, category, or keyword...">
+                    <button class="btn btn-primary" onclick="searchMarketplace()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                    <button class="btn btn-secondary" onclick="clearMarketplaceSearch()">
+                        <i class="fas fa-times"></i> Clear
+                    </button>
+                </div>
+                <div class="marketplace-filters" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+                    <span class="filter-tag active" data-category="all" style="cursor:pointer; padding:4px 12px; background:var(--primary); color:white; border-radius:20px; font-size:12px;">All</span>
+                    <span class="filter-tag" data-category="camera" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:20px; font-size:12px;">Camera</span>
+                    <span class="filter-tag" data-category="location" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:20px; font-size:12px;">Location</span>
+                    <span class="filter-tag" data-category="file" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:20px; font-size:12px;">File</span>
+                    <span class="filter-tag" data-category="network" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:20px; font-size:12px;">Network</span>
+                    <span class="filter-tag" data-category="device" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:20px; font-size:12px;">Device</span>
+                </div>
+            </div>
+
+            <div class="marketplace-results" id="marketplaceResults">
+                <div class="text-center text-muted" style="padding:40px;">
+                    <i class="fas fa-search" style="font-size:48px; display:block; margin-bottom:16px;"></i>
+                    <p>Search for plugins to install in your project</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

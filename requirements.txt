@@ -1,0 +1,19 @@
+# Core Dependencies
+eel
+
+# Web Framework
+flask
+flask-cors
+
+# Development Tools
+pytest
+black
+flake8
+
+# Code Quality
+pre-commit
+
+# Additional
+requests
+Pillow
+psutil

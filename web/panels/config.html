@@ -1,0 +1,97 @@
+<section class="panel" id="panel-config">
+    <div class="panel-header">
+        <h2><i class="fas fa-cog"></i> Config.xml Editor</h2>
+        <p>Direct XML editing for your Cordova project configuration</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- TOOLBAR -->
+    <!-- ============================================================ -->
+    <div class="config-toolbar" style="display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; align-items:center;">
+        <button class="btn btn-primary" onclick="saveRawXmlDirect()">
+            <i class="fas fa-save"></i> Save
+        </button>
+        <button class="btn btn-secondary" onclick="loadRawXmlDirect()">
+            <i class="fas fa-sync"></i> Reload
+        </button>
+        <button class="btn btn-success" onclick="validateRawXml()">
+            <i class="fas fa-check"></i> Validate
+        </button>
+        <button class="btn btn-danger" onclick="resetRawXml()">
+            <i class="fas fa-undo"></i> Reset
+        </button>
+        <span style="flex:1;"></span>
+        <span id="configStatus" style="display:flex; align-items:center; gap:8px; padding:6px 12px; background:var(--bg-tertiary); border-radius:6px; font-size:13px;">
+            <i class="fas fa-circle" style="color:var(--success);"></i>
+            <span>Ready</span>
+        </span>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- PREFERENCES & PERMISSIONS MANAGER -->
+    <!-- ============================================================ -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;">
+        
+        <!-- Preferences Section -->
+        <div class="card">
+            <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="margin:0; font-size:16px;">
+                    <i class="fas fa-sliders-h" style="color:var(--warning);"></i> Preferences
+                </h3>
+                <button class="btn btn-sm btn-primary" onclick="showAddPreferenceDialog()">
+                    <i class="fas fa-plus"></i> Add
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="preferencesContainer" style="display:flex; flex-wrap:wrap; gap:8px; min-height:40px;">
+                    <!-- Preferences will be rendered here -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Permissions Section -->
+        <div class="card">
+            <div class="card-header" style="display:flex; justify-content:space-between; align-items:center;">
+                <h3 style="margin:0; font-size:16px;">
+                    <i class="fas fa-shield-alt" style="color:var(--info);"></i> Permissions
+                </h3>
+                <button class="btn btn-sm btn-primary" onclick="showAddPermissionDialog()">
+                    <i class="fas fa-plus"></i> Add
+                </button>
+            </div>
+            <div class="card-body">
+                <div id="permissionsContainer" style="display:flex; flex-wrap:wrap; gap:8px; min-height:40px;">
+                    <!-- Permissions will be rendered here -->
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+    <!-- ============================================================ -->
+    <!-- RAW XML EDITOR -->
+    <!-- ============================================================ -->
+    <div class="card">
+        <div class="card-header">
+            <h3><i class="fas fa-code"></i> config.xml</h3>
+            <span style="font-size:12px; color:var(--text-secondary);">
+                <i class="fas fa-info-circle"></i> Edit the XML directly
+            </span>
+        </div>
+        <div class="card-body" style="padding:0;">
+            <textarea id="rawXmlEditor" 
+                style="width:100%; min-height:500px; padding:16px; font-family:'Consolas','Courier New',monospace; font-size:13px; border:none; background:#0f172a; color:#e2e8f0; resize:vertical; line-height:1.6; tab-size:4;" 
+                spellcheck="false"></textarea>
+        </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- VALIDATION OUTPUT -->
+    <!-- ============================================================ -->
+    <div id="validationOutput" style="display:none; margin-top:12px; padding:12px 16px; border-radius:8px; background:var(--bg-tertiary); border-left:4px solid var(--success);">
+        <span id="validationMessage"></span>
+    </div>
+
+</section>

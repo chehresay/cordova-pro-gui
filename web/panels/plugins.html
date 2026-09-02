@@ -1,0 +1,596 @@
+<section class="panel" id="panel-plugins">
+    <div class="panel-header">
+        <h2><i class="fas fa-puzzle-piece"></i> Plugin Manager</h2>
+        <p>Install, update, and manage Cordova plugins</p>
+    </div>
+
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> Installed Plugins</h3>
+                </div>
+                <div class="card-body">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Plugin Name</th>
+                                    <th>Version</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pluginsList">
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted">
+                                        <i class="fas fa-info-circle"></i> No plugins installed
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-plus"></i> Add Plugin</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Plugin Name</label>
+                        <input type="text" class="form-control" id="pluginName" placeholder="cordova-plugin-camera">
+                    </div>
+                    <div class="form-group">
+                        <label>Version</label>
+                        <input type="text" class="form-control" id="pluginVersion" placeholder="latest">
+                    </div>
+                    <button class="btn btn-success w-100" onclick="addPlugin()">
+                        <i class="fas fa-plus"></i> Install Plugin
+                    </button>
+                    <hr>
+                    
+                    <div class="popular-plugins" style="max-height:550px; overflow-y:auto; padding-right:4px;">
+                        <h4>📦 Plugin Library</h4>
+                        
+                        <!-- ========================================== -->
+                        <!-- 1. CORE / ESSENTIAL PLUGINS -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:12px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">📱 Core Plugins</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-camera')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-camera"></i> Camera
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-geolocation')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-map-marker-alt"></i> Location
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-file')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-file"></i> File
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-device')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-mobile"></i> Device
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-network-information')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-wifi"></i> Network
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-vibration')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-bell"></i> Vibration
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-battery-status')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-battery-three-quarters"></i> Battery
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-accelerometer')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-arrow-right"></i> Accelerometer
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-device-motion')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-running"></i> Motion
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-device-orientation')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-compass"></i> Orientation
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-globalization')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-language"></i> Globalization
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 2. UI / INTERFACE PLUGINS -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">🎨 UI & Interface</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-statusbar')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-arrow-up"></i> StatusBar
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-splashscreen')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-image"></i> SplashScreen
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-dialogs')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-comment"></i> Dialogs
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-toast')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-bell"></i> Toast
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-progress')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-spinner"></i> Progress
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-fullscreen-plus')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-expand"></i> Fullscreen
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-ionic-keyboard')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-keyboard"></i> Keyboard
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-ionic-webview')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-globe"></i> WebView
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-nativestorage')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-database"></i> NativeStorage
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 3. STORAGE / DATABASE -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">💾 Storage & Database</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-sqlite')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-database"></i> SQLite
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-sqlite-2')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-database"></i> SQLite 2
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-secure-storage')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-lock"></i> Secure Storage
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-indexeddb')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-database"></i> IndexedDB
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-localstorage')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-database"></i> LocalStorage
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-websql')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-database"></i> WebSQL
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 4. MEDIA / AUDIO / VIDEO -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">🎵 Audio & Video</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-media')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-music"></i> Media
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-media-capture')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-video"></i> Media Capture
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-streaming-media')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-play"></i> Streaming
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-audioinput')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-microphone"></i> Audio Input
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-video-editor')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-edit"></i> Video Editor
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-video-thumbnail')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-image"></i> Thumbnail
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-music-controls')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-music"></i> Music Controls
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 5. BARCODE / SCANNER -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">📷 Scanner & Barcode</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('phonegap-plugin-barcodescanner')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-qrcode"></i> Barcode Scanner
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-qrscanner')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-qrcode"></i> QR Scanner
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-qrreader')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-qrcode"></i> QR Reader
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-document-scanner')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-file-alt"></i> Document Scan
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 6. FIREBASE / GOOGLE -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">☁️ Firebase & Google</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-firebase')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-fire"></i> Firebase Core
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-firebase-messaging')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-bell"></i> FCM (Push)
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-firebase-analytics')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-chart-line"></i> Analytics
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-firebase-crashlytics')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-bug"></i> Crashlytics
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-firebase-auth')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-user"></i> Auth
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-firebase-database')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-database"></i> Database
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-firebase-storage')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-cloud"></i> Storage
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-googleplus')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-google"></i> Google+
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-googlemaps')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-map"></i> Google Maps
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 7. SOCIAL / SHARING -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">🤝 Social & Sharing</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-x-socialsharing')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-share-alt"></i> Social Sharing
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-email-composer')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-envelope"></i> Email Composer
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-facebook4')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-facebook"></i> Facebook
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-twitter')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-twitter"></i> Twitter
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-instagram')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-instagram"></i> Instagram
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-whatsapp')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-telegram')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-telegram"></i> Telegram
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 8. PAYMENT / IN-APP PURCHASE -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">💰 Payment & In-App</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-purchase')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-shopping-cart"></i> In-App Purchase
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-paypal')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-paypal"></i> PayPal
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-stripe')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-stripe"></i> Stripe
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-card')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-credit-card"></i> Card
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 9. NOTIFICATION / PUSH -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">🔔 Notifications & Push</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('onesignal-cordova-plugin')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-bell"></i> OneSignal
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-fcm')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-bell"></i> FCM (3rd)
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-push-notification')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-bell"></i> Push Notif.
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-local-notification')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-bell"></i> Local Notif.
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('de.appplant.cordova.plugin.badge')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-badge"></i> Badge
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 10. UTILITIES / TOOLS -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">🔧 Utilities & Tools</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-insomnia')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-moon"></i> Insomnia
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-screen-orientation')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-rotate"></i> Orientation
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-inappbrowser')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-browser"></i> InAppBrowser
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-whitelist')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-check-circle"></i> Whitelist
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-android-permissions')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-shield-alt"></i> Permissions
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-advanced-http')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-http"></i> Advanced HTTP
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-background-fetch')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-sync"></i> Background Fetch
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-background-mode')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-cog"></i> Background Mode
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-app-version')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-code-branch"></i> App Version
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-app-preferences')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-cog"></i> Preferences
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-launch-navigator')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-map-pin"></i> Launch Navigator
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-customurlscheme')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-link"></i> URL Scheme
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-universal-links')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-link"></i> Universal Links
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 11. HARDWARE / SENSORS -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">📡 Hardware & Sensors</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-fingerprint')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-fingerprint"></i> Fingerprint
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-nfc')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-wifi"></i> NFC
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-bluetooth')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-bluetooth-b"></i> Bluetooth
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-ble-central')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-bluetooth-b"></i> BLE
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-barometer')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-tachometer-alt"></i> Barometer
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-gyroscope')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-sync"></i> Gyroscope
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-magnetometer')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-compass"></i> Magnetometer
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-light-sensor')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-sun"></i> Light Sensor
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-temperature')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-thermometer-half"></i> Temperature
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 12. CONTACTS / CALENDAR / MESSAGES -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">📇 Contacts & Calendar</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-contacts')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-address-book"></i> Contacts
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-calendar')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-calendar"></i> Calendar
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-sms')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-sms"></i> SMS
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-call')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-phone"></i> Call
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 13. 3RD PARTY / POPULAR -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">⭐ Popular 3rd Party</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('com.telerik.plugins.nativepagetransitions')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-arrow-right"></i> Page Transitions
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('com.razorpay.cordova')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-credit-card"></i> Razorpay
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('com.paypal.cordova.mobilesdk')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-paypal"></i> PayPal SDK
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('com.salesforce.plugin')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-salesforce"></i> Salesforce
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('com.microsoft.azure.mobileanalytics')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-microsoft"></i> Azure Analytics
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('com.amazon.cordova.plugin')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-amazon"></i> Amazon
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('com.samsung.android.cordova')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-samsung"></i> Samsung
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 14. FILE / DOCUMENT PLUGINS -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">📄 File & Document</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-file-opener2')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-file-open"></i> File Opener
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-file-transfer')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-file-export"></i> File Transfer
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-filechooser')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-file"></i> File Chooser
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-pdf-generator')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-file-pdf"></i> PDF Generator
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-zip')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-file-archive"></i> ZIP
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 15. GAMING / ANIMATION -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">🎮 Gaming & Animation</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-gamepad')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-gamepad"></i> Gamepad
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-lottie')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-play"></i> Lottie
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-particle')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-sparkles"></i> Particle
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 16. SECURITY / AUTH -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">🔒 Security & Auth</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-touchid')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-fingerprint"></i> TouchID
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-faceid')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-face-smile"></i> FaceID
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-pin')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-key"></i> PIN
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-security')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-shield"></i> Security
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-ssl')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-lock"></i> SSL
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 17. TESTING / DEBUG -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">🧪 Testing & Debug</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-console')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-terminal"></i> Console
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-test')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-vial"></i> Test
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-mock')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-beaker"></i> Mock
+                            </span>
+                        </div>
+
+                        <!-- ========================================== -->
+                        <!-- 18. OTHER / MISC -->
+                        <!-- ========================================== -->
+                        <div style="margin-top:10px; padding:4px 0; border-bottom:1px solid var(--border);">
+                            <span style="font-weight:700; font-size:13px; color:var(--primary);">📦 Other Plugins</span>
+                        </div>
+                        <div class="plugin-tags" style="display:flex; flex-wrap:wrap; gap:6px; margin-top:6px;">
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-tts')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-volume-up"></i> TTS
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-speech')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-microphone"></i> Speech
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-clipboard')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-copy"></i> Clipboard
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-shake')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-hand"></i> Shake
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-pedometer')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-shoe-prints"></i> Pedometer
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-health')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-heartbeat"></i> Health
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-fitness')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-dumbbell"></i> Fitness
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-barcode')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-barcode"></i> Barcode
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-ocr')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-font"></i> OCR
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-facebook-ads')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fab fa-facebook"></i> Facebook Ads
+                            </span>
+                            <span class="plugin-tag" onclick="quickAddPlugin('cordova-plugin-admob')" style="padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:11px; cursor:pointer; transition:var(--transition);">
+                                <i class="fas fa-ad"></i> AdMob
+                            </span>
+                        </div>
+
+                        <div style="margin-top:12px; padding:8px; background:var(--bg-info); border-radius:6px; font-size:11px; color:var(--text-secondary); text-align:center;">
+                            <i class="fas fa-info-circle"></i> 
+                            <strong>Total:</strong> 140+ plugins available
+                        </div>
+                    </div>    
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

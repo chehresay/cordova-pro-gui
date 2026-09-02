@@ -1,0 +1,134 @@
+<!-- SDK Manager Panel - FIXED -->
+<section class="panel" id="panel-sdk">
+    <div class="panel-header">
+        <h2><i class="fas fa-tools"></i> SDK Manager</h2>
+        <p>Manage SDKs and development tools for your Cordova projects</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fab fa-android"></i> Android SDK</h3>
+                </div>
+                <div class="card-body">
+                    <div class="sdk-status">
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border);">
+                            <span class="sdk-label" style="font-weight:500;">Status:</span>
+                            <span class="sdk-value" id="androidStatus">Checking...</span>
+                        </div>
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border);">
+                            <span class="sdk-label" style="font-weight:500;">Path:</span>
+                            <span class="sdk-value" id="androidSdkPath" style="font-size:12px;">Not set</span>
+                        </div>
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border);">
+                            <span class="sdk-label" style="font-weight:500;">API Level:</span>
+                            <span class="sdk-value" id="androidApiLevel">-</span>
+                        </div>
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0;">
+                            <span class="sdk-label" style="font-weight:500;">Build Tools:</span>
+                            <span class="sdk-value" id="androidBuildTools">-</span>
+                        </div>
+                    </div>
+                    <div class="sdk-actions" style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button class="btn btn-primary btn-sm" onclick="checkAndroidSDK()">
+                            <i class="fas fa-sync"></i> Check SDK
+                        </button>
+                        <button class="btn btn-success btn-sm" onclick="setAndroidSDKPath()">
+                            <i class="fas fa-folder-open"></i> Set Path
+                        </button>
+                        <button class="btn btn-warning btn-sm" onclick="installAndroidSDK()">
+                            <i class="fas fa-download"></i> Download SDK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fab fa-apple"></i> iOS SDK</h3>
+                </div>
+                <div class="card-body">
+                    <div class="sdk-status">
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border);">
+                            <span class="sdk-label" style="font-weight:500;">Status:</span>
+                            <span class="sdk-value" id="iosStatus">Checking...</span>
+                        </div>
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border);">
+                            <span class="sdk-label" style="font-weight:500;">Xcode:</span>
+                            <span class="sdk-value" id="iosXcodeVersion">-</span>
+                        </div>
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0;">
+                            <span class="sdk-label" style="font-weight:500;">iOS Version:</span>
+                            <span class="sdk-value" id="iosVersion">-</span>
+                        </div>
+                    </div>
+                    <div class="sdk-actions" style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button class="btn btn-primary btn-sm" onclick="checkIosSDK()">
+                            <i class="fas fa-sync"></i> Check SDK
+                        </button>
+                        <button class="btn btn-info btn-sm" onclick="openXcode()">
+                            <i class="fas fa-external-link-alt"></i> Open Xcode
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fab fa-windows"></i> Windows SDK</h3>
+                </div>
+                <div class="card-body">
+                    <div class="sdk-status">
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0;">
+                            <span class="sdk-label" style="font-weight:500;">Status:</span>
+                            <span class="sdk-value" id="windowsStatus">Checking...</span>
+                        </div>
+                    </div>
+                    <div class="sdk-actions" style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button class="btn btn-primary btn-sm" onclick="checkWindowsSDK()">
+                            <i class="fas fa-sync"></i> Check SDK
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-globe"></i> Environment</h3>
+                </div>
+                <div class="card-body">
+                    <div class="sdk-status">
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border);">
+                            <span class="sdk-label" style="font-weight:500;">Node.js:</span>
+                            <span class="sdk-value" id="nodeVersion">-</span>
+                        </div>
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border);">
+                            <span class="sdk-label" style="font-weight:500;">npm:</span>
+                            <span class="sdk-value" id="npmVersion">-</span>
+                        </div>
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0; border-bottom:1px solid var(--border);">
+                            <span class="sdk-label" style="font-weight:500;">Cordova:</span>
+                            <span class="sdk-value" id="cordovaVersion">-</span>
+                        </div>
+                        <div class="sdk-item" style="display:flex; justify-content:space-between; padding:6px 0;">
+                            <span class="sdk-label" style="font-weight:500;">Java:</span>
+                            <span class="sdk-value" id="javaVersion">-</span>
+                        </div>
+                    </div>
+                    <div class="sdk-actions" style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;">
+                        <button class="btn btn-primary btn-sm" onclick="checkEnvironment()">
+                            <i class="fas fa-sync"></i> Check Environment
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

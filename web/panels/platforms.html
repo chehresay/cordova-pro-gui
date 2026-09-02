@@ -1,0 +1,55 @@
+<section class="panel" id="panel-platforms">
+    <div class="panel-header">
+        <h2><i class="fas fa-mobile-alt"></i> Platform Manager</h2>
+        <p>Add or remove platforms for your Cordova project</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> Installed Platforms</h3>
+                </div>
+                <div class="card-body">
+                    <div id="platformsList">
+                        <p class="text-muted">No platforms installed</p>
+                    </div>
+                </div>
+                <button class="btn btn-sm btn-secondary" onclick="refreshPlatformsList()">
+                    <i class="fas fa-sync"></i> Refresh
+                </button>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-plus"></i> Add Platform</h3>
+                </div>
+                <div class="card-body">
+                    <div class="platform-grid">
+                        <div class="platform-card" onclick="addPlatform('android')">
+                            <i class="fab fa-android"></i>
+                            <span>Android</span>
+                        </div>
+                        <div class="platform-card" onclick="addPlatform('ios')">
+                            <i class="fab fa-apple"></i>
+                            <span>iOS</span>
+                        </div>
+                        <div class="platform-card" onclick="addPlatform('windows')">
+                            <i class="fab fa-windows"></i>
+                            <span>Windows</span>
+                        </div>
+                        <div class="platform-card" onclick="addPlatform('browser')">
+                            <i class="fab fa-chrome"></i>
+                            <span>Browser</span>
+                        </div>
+                        <div class="platform-card" onclick="addPlatform('electron')">
+                            <i class="fab fa-desktop"></i>
+                            <span>Electron</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

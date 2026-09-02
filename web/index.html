@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cordova Pro GUI - Professional Cordova Management</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="assets/fonts/font-awesome/css/all.min.css">
+    
+    <!-- Inter Font -->
+    <link href="assets/fonts/inter/inter.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+<body>
+    <!-- ============================================================ -->
+    <!-- SIDEBAR -->
+    <!-- ============================================================ -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <!--<i class="fas fa-mobile-alt logo-icon"></i>-->
+                <img class="logo-img" src="assets/images/icon.png">
+                <span class="logo-text">Cordova Pro</span>
+                <span class="version-badge">v2.0</span>
+            </div>
+            <p class="logo-subtitle">Professional GUI for Cordova</p>
+        </div>
+
+        <nav class="sidebar-nav" id="sidebarNav">
+            <!-- Navigation items will be rendered by JavaScript -->
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="project-status" id="projectStatus">
+                <i class="fas fa-circle status-offline"></i>
+                <span>No project open</span>
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="Toggle Theme">
+                <i class="fas fa-moon"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- ============================================================ -->
+    <!-- MAIN CONTENT -->
+    <!-- ============================================================ -->
+    <main class="main-content" id="mainContent">
+        <!-- Header -->
+        <header class="main-header">
+            <div class="header-left">
+                <button class="btn-icon" id="toggleSidebar" title="Toggle Sidebar">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="breadcrumb" id="breadcrumb">
+                    <span class="breadcrumb-item active">Dashboard</span>
+                </div>
+            </div>
+            <div class="header-right">
+                <div class="project-info" id="headerProjectInfo">
+                    <i class="fas fa-folder"></i>
+                    <span id="headerProjectName">No Project</span>
+                </div>
+                <button class="btn-icon" id="refreshBtn" title="Refresh">
+                    <i class="fas fa-sync-alt"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Content Area - Panels will be loaded here -->
+        <div class="content-area" id="contentArea">
+            <div class="panel-loader" id="panelLoader">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Loading panel...</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- ============================================================ -->
+    <!-- MODALS -->
+    <!-- ============================================================ -->
+    <div class="modal-overlay" id="modalOverlay" style="display:none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 id="modalTitle">Modal Title</h3>
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                Modal content goes here
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal()">Close</button>
+                <button class="btn btn-primary" id="modalActionBtn">Action</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- LOADER OVERLAY -->
+    <!-- ============================================================ -->
+    <div class="loader-overlay" id="loaderOverlay" style="display:none;">
+        <div class="loader-container">
+            <div class="loader-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            <div class="loader-text" id="loaderText">Processing...</div>
+            <div class="loader-progress" id="loaderProgress">
+                <div class="progress-bar" id="progressBar" style="width:0%;"></div>
+            </div>
+            <button class="btn btn-danger btn-sm" id="cancelBtn" onclick="cancelCurrentOperation()">
+                <i class="fas fa-times"></i> Cancel
+            </button>
+        </div>
+    </div>
+
+
+    <!-- ============================================================ -->
+    <!-- TOAST NOTIFICATION -->
+    <!-- ============================================================ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS -->
+    <!-- ============================================================ -->
+    <script src="assets/js/jquery-3.7.1.min.js"></script>
+    <script src="assets/js/sweetalert2.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="script.js"></script>
+    <script type="text/javascript" src="/eel.js"></script>
+</body>
+</html>

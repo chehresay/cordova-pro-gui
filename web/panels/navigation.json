@@ -1,0 +1,53 @@
+{
+    "sections": [
+        {
+            "title": "Dashboard",
+            "items": [
+                { "id": "dashboard", "icon": "fa-th-large", "label": "Dashboard" }
+            ]
+        },
+        {
+            "title": "Project",
+            "items": [
+                { "id": "project", "icon": "fa-folder-open", "label": "Project Manager" },
+                { "id": "recent", "icon": "fa-history", "label": "Recent Projects" }
+            ]
+        },
+        {
+            "title": "Platforms",
+            "items": [
+                { "id": "platforms", "icon": "fa-mobile-alt", "label": "Platform Manager" },
+                { "id": "sdk", "icon": "fa-tools", "label": "SDK Manager" }
+            ]
+        },
+        {
+            "title": "Plugins",
+            "items": [
+                { "id": "plugins", "icon": "fa-puzzle-piece", "label": "Plugin Manager" },
+                { "id": "marketplace", "icon": "fa-store", "label": "Marketplace" }
+            ]
+        },
+        {
+            "title": "Build & Deploy",
+            "items": [
+                { "id": "build", "icon": "fa-hammer", "label": "Build Manager" },
+                { "id": "deploy", "icon": "fa-rocket", "label": "Run & Deploy" }
+            ]
+        },
+        {
+            "title": "Configuration",
+            "items": [
+                { "id": "config", "icon": "fa-cog", "label": "Config Editor" },
+                { "id": "resources", "icon": "fa-images", "label": "Resources" }
+            ]
+        },
+        {
+            "title": "Advanced",
+            "items": [
+                { "id": "console", "icon": "fa-terminal", "label": "Console" },
+                { "id": "settings", "icon": "fa-sliders-h", "label": "Settings" },
+                { "id": "docs", "icon": "fa-book", "label": "Documentation" }
+            ]
+        }
+    ]
+}

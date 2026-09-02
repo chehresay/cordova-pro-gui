@@ -1,0 +1,339 @@
+<section class="panel" id="panel-settings">
+    <div class="panel-header">
+        <h2><i class="fas fa-sliders-h"></i> Settings</h2>
+        <p>Customize your Cordova Pro GUI experience</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-palette"></i> Appearance</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Theme</label>
+                        <select class="form-control" id="settingsTheme">
+                            <option value="system">System Default</option>
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Accent Color</label>
+                        <div style="display:flex; gap:8px; align-items:center;">
+                            <input type="color" class="form-control" id="settingsAccentColor" value="#6366f1" style="width:60px; padding:4px;">
+                            <span class="color-hex" id="settingsAccentHex">#6366f1</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Font Size</label>
+                        <select class="form-control" id="settingsFontSize">
+                            <option value="small">Small</option>
+                            <option value="medium" selected>Medium</option>
+                            <option value="large">Large</option>
+                            <option value="xlarge">Extra Large</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-cog"></i> Preferences</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Default Project Path</label>
+                        <div class="input-group" style="display:flex; gap:8px;">
+                            <input type="text" class="form-control" id="settingsDefaultPath" placeholder="C:/Projects">
+                            <button class="btn btn-outline" onclick="selectDefaultPath()">
+                                <i class="fas fa-folder-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Default Template</label>
+                        <select class="form-control" id="settingsDefaultTemplate">
+                            <option value="empty">Empty</option>
+                            <option value="tabs">Tabs</option>
+                            <option value="sidebar">Sidebar</option>
+                            <option value="material">Material Design</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Auto Save</label>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <input type="checkbox" id="settingsAutoSave" checked>
+                            <label for="settingsAutoSave" style="margin:0;">Enable auto-save</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Check for Updates</label>
+                        <div style="display:flex; align-items:center; gap:8px;">
+                            <input type="checkbox" id="settingsCheckUpdates" checked>
+                            <label for="settingsCheckUpdates" style="margin:0;">Automatically check for updates</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- ============================================================ -->
+<!-- KEYSTORE MANAGEMENT -->
+<!-- ============================================================ -->
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-key"></i> Keystore Management</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Configure your signing keystore for release builds</p>
+                
+                <div class="row">
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label>Keystore Path</label>
+                            <div class="input-group" style="display:flex; gap:8px;">
+                                <input type="text" class="form-control" id="settingsKeystorePath" placeholder="D:/path/to/my-release-key.keystore">
+                                <button class="btn btn-outline" onclick="selectKeystorePath()">
+                                    <i class="fas fa-folder-open"></i>
+                                </button>
+                                <button class="btn btn-success" onclick="createNewKeystore()">
+                                    <i class="fas fa-plus"></i> New
+                                </button>
+                            </div>
+                            <small class="text-muted">Select existing keystore or create a new one</small>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Store Password</label>
+                            <input type="password" class="form-control" id="settingsStorePassword" placeholder="Enter store password">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Key Alias</label>
+                            <input type="text" class="form-control" id="settingsKeyAlias" placeholder="myapp">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Key Password</label>
+                            <input type="password" class="form-control" id="settingsKeyPassword" placeholder="Enter key password">
+                        </div>
+                    </div>
+                    
+                    <div class="col-4">
+                        <div class="card" style="background:var(--bg-tertiary); padding:12px; border-radius:8px;">
+                            <h4 style="font-size:14px; margin-bottom:8px;">Keystore Info</h4>
+                            <div id="keystoreStatus" style="font-size:13px;">
+                                <span class="text-muted">No keystore configured</span>
+                            </div>
+                            <div id="keystoreDetails" style="font-size:12px; margin-top:8px; color:var(--text-secondary);">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- Keystore action buttons -->
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">
+                    <!-- ✅ Save Keystore button -->
+                    <button class="btn btn-primary" onclick="saveKeystore()">
+                        <i class="fas fa-save"></i> Save Keystore
+                    </button>
+                    <!-- ✅ Test button -->
+                    <button class="btn btn-secondary" onclick="testKeystore()">
+                        <i class="fas fa-check"></i> Test Keystore
+                    </button>
+                    <!-- ✅ Clear button -->
+                    <button class="btn btn-danger" onclick="clearKeystore()">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <!-- ============================================================ -->
+<!-- SDK SETTINGS -->
+<!-- ============================================================ -->
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-tools"></i> SDK Paths</h3>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label>Android SDK Path</label>
+                    <div class="input-group" style="display:flex; gap:8px;">
+                        <input type="text" class="form-control" id="settingsAndroidSdkPath" placeholder="D:/Program/Android/android-sdk">
+                        <button class="btn btn-outline" onclick="selectAndroidSdkPath()">
+                            <i class="fas fa-folder-open"></i>
+                        </button>
+                    </div>
+                    <small class="text-muted">Leave empty for auto-detection</small>
+                </div>
+                <div class="form-group">
+                    <label>Gradle Path</label>
+                    <div class="input-group" style="display:flex; gap:8px;">
+                        <input type="text" class="form-control" id="settingsGradlePath" placeholder="C:/Gradle/gradle-8.14.2">
+                        <button class="btn btn-outline" onclick="selectGradlePath()">
+                            <i class="fas fa-folder-open"></i>
+                        </button>
+                    </div>
+                    <small class="text-muted">Leave empty for auto-detection</small>
+                </div>
+                <div class="form-group">
+                    <label>Java JDK Path</label>
+                    <div class="input-group" style="display:flex; gap:8px;">
+                        <input type="text" class="form-control" id="settingsJavaPath" placeholder="C:/Program Files/Java/jdk-17">
+                        <button class="btn btn-outline" onclick="selectJavaPath()">
+                            <i class="fas fa-folder-open"></i>
+                        </button>
+                    </div>
+                    <small class="text-muted">Leave empty for auto-detection</small>
+                </div>
+                <button class="btn btn-primary" onclick="saveSdkPaths()">
+                    <i class="fas fa-save"></i> Save SDK Paths
+                </button>
+                <button class="btn btn-secondary" onclick="detectSdkPaths()">
+                    <i class="fas fa-search"></i> Auto-Detect
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- MAVEN REPOSITORIES -->
+<!-- ============================================================ -->
+<div class="row mt-3">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3><i class="fas fa-code-branch"></i> Maven Repositories</h3>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Fix Maven repository issues for Android builds (lint-gradle, dependencies)</p>
+                
+                <div class="row">
+                    <div class="col-8">
+                        <div class="form-group">
+                            <label>Repository Status</label>
+                            <div id="mavenStatus" style="padding: 8px 12px; background: var(--bg-tertiary); border-radius: 4px;">
+                                <span id="mavenStatusText">Not checked</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label>Actions</label>
+                            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                                <button class="btn btn-warning" onclick="fixMavenRepositories()">
+                                    <i class="fas fa-wrench"></i> Fix Maven
+                                </button>
+                                <button class="btn btn-info" onclick="checkMavenStatus()">
+                                    <i class="fas fa-search"></i> Check Status
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="mavenOutput" style="display:none; margin-top: 12px; padding: 12px; background: #0f172a; color: #e2e8f0; border-radius: 8px; font-family: 'Consolas', monospace; font-size: 13px; max-height: 200px; overflow-y: auto; white-space: pre-wrap;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-save"></i> Save Settings</h3>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-primary" onclick="saveSettings()">
+                        <i class="fas fa-save"></i> Save All Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-database"></i> Data Management</h3>
+                </div>
+                <div class="card-body">
+                    <div class="settings-actions" style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px;">
+                        <button class="btn btn-warning" onclick="clearCache()">
+                            <i class="fas fa-broom"></i> Clear Cache
+                        </button>
+                        <button class="btn btn-info" onclick="exportData()">
+                            <i class="fas fa-file-export"></i> Export Data
+                        </button>
+                        <button class="btn btn-info" onclick="importData()">
+                            <i class="fas fa-file-import"></i> Import Data
+                        </button>
+                        <button class="btn btn-danger" onclick="resetAll()">
+                            <i class="fas fa-undo"></i> Reset to Defaults
+                        </button>
+                    </div>
+                    <div class="settings-info" style="background:var(--bg-tertiary); padding:12px; border-radius:8px;">
+                        <p style="margin:4px 0;"><strong>Application Data:</strong> <span id="settingsDataPath">~/.cordova-pro-gui</span></p>
+                        <p style="margin:4px 0;"><strong>Cache Size:</strong> <span id="settingsCacheSize">0 MB</span></p>
+                        <p style="margin:4px 0;"><strong>Projects:</strong> <span id="settingsProjectCount">0</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-heart"></i> Support & Donations</h3>
+                </div>
+                <div class="card-body">
+                    <div class="donation-section" style="background:var(--bg-secondary); padding:16px; border-radius:8px;">
+                        <p>If you find Cordova Pro GUI useful, consider supporting its development:</p>
+                        <div class="donation-addresses" style="margin-top:8px;">
+                            <div class="donation-item" style="display:flex; align-items:center; gap:8px; padding:4px 0; flex-wrap:wrap;">
+                                <i class="fab fa-bitcoin" style="color:#f7931a; font-size:20px;"></i>
+                                <span class="donation-label">Bitcoin (BTC):</span>
+                                <code style="background:var(--bg-primary); padding:2px 8px; border-radius:4px; font-size:13px; word-break:break-all;">bc1q0r3gzt5xtlglerst36vh6567023thpv5huthrl</code>
+                                <button class="btn btn-sm btn-outline" onclick="copyAddress('bc1q0r3gzt5xtlglerst36vh6567023thpv5huthrl')">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <div class="donation-item" style="display:flex; align-items:center; gap:8px; padding:4px 0; flex-wrap:wrap;">
+                                <i class="fab fa-ethereum" style="color:#627eea; font-size:20px;"></i>
+                                <span class="donation-label">Ethereum (ETH):</span>
+                                <code style="background:var(--bg-primary); padding:2px 8px; border-radius:4px; font-size:13px; word-break:break-all;">0xd77935cb0f1b03054720de9cb94c3d7df12b9d0e</code>
+                                <button class="btn btn-sm btn-outline" onclick="copyAddress('0xd77935cb0f1b03054720de9cb94c3d7df12b9d0e')">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

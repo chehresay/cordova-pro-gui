@@ -1,0 +1,63 @@
+<section class="panel active" id="panel-dashboard">
+    <div class="panel-header">
+        <h2><i class="fas fa-th-large"></i> Dashboard</h2>
+        <p>Overview of your Cordova projects and system status</p>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-folder-open"></i></div>
+            <div class="stat-info">
+                <h3 id="totalProjects">0</h3>
+                <span>Total Projects</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-mobile-alt"></i></div>
+            <div class="stat-info">
+                <h3 id="totalPlatforms">0</h3>
+                <span>Platforms</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-puzzle-piece"></i></div>
+            <div class="stat-info">
+                <h3 id="totalPlugins">0</h3>
+                <span>Plugins</span>
+            </div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-clock"></i></div>
+            <div class="stat-info">
+                <h3 id="lastBuild">-</h3>
+                <span>Last Build</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-9">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-bolt"></i> Quick Actions</h3>
+                </div>
+                <div class="card-body">
+                    <div class="quick-actions-grid">
+                        <button class="action-btn primary" onclick="createNewProject()">
+                            <i class="fas fa-plus"></i> New Project
+                        </button>
+                        <button class="action-btn success" onclick="openProject()">
+                            <i class="fas fa-folder-open"></i> Open Project
+                        </button>
+                        <button class="action-btn warning" onclick="buildProject()">
+                            <i class="fas fa-hammer"></i> Build
+                        </button>
+                        <button class="action-btn info" onclick="runApp()">
+                            <i class="fas fa-play"></i> Run
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

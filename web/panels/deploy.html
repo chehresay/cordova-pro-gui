@@ -1,0 +1,154 @@
+<section class="panel" id="panel-deploy">
+    <div class="panel-header">
+        <h2><i class="fas fa-rocket"></i> Run & Deploy</h2>
+        <p>Deploy your app to devices, emulators, or app stores</p>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- WiFi Debugging Section -->
+    <!-- ============================================================ -->
+    <div class="card" style="margin-bottom:16px; border:2px solid var(--info);">
+        <div class="card-header" style="background:var(--info); color:white;">
+            <h3 style="margin:0; font-size:16px; display:flex; align-items:center; gap:8px;">
+                <i class="fas fa-wifi"></i> 
+                WiFi Debugging (Wireless ADB)
+                <span style="font-size:12px; font-weight:normal; opacity:0.8; margin-left:8px;">
+                    Android 11+
+                </span>
+            </h3>
+        </div>
+        <div class="card-body">
+            <div class="row" style="display:grid; grid-template-columns:2fr 1fr; gap:16px;">
+                <div>
+                    <div class="form-group" style="display:flex; gap:8px; align-items:center;">
+                        <label style="margin:0; white-space:nowrap;">IP Address:</label>
+                        <input type="text" class="form-control" id="wifiDeviceIp" 
+                               placeholder="e.g., 192.168.1.100" 
+                               style="flex:1;"
+                               value="">
+                        <label style="margin:0; white-space:nowrap;">Port:</label>
+                        <input type="number" class="form-control" id="wifiDevicePort" 
+                               value="5555" style="width:80px;">
+                        <button class="btn btn-success" onclick="connectWifiDevice()">
+                            <i class="fas fa-plug"></i> Connect
+                        </button>
+                    </div>
+                    <div style="display:flex; gap:8px; margin-top:4px;">
+                        <button class="btn btn-sm btn-secondary" onclick="showPairingDialog()">
+                            <i class="fas fa-key"></i> Pair with Code
+                        </button>
+                        <button class="btn btn-sm btn-secondary" onclick="refreshDevices()">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                        <span id="wifiStatus" style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; margin-left:8px;">
+                            <i class="fas fa-circle" style="color:var(--text-secondary); font-size:8px; margin-right:4px;"></i>
+                            Disconnected
+                        </span>
+                    </div>
+                </div>
+                <div style="background:var(--bg-tertiary); padding:8px 12px; border-radius:6px; font-size:12px; color:var(--text-secondary);">
+                    <i class="fas fa-info-circle"></i> 
+                    <strong>How to connect:</strong><br>
+                    1. Enable Wireless Debugging on phone<br>
+                    2. Enter IP:Port from phone<br>
+                    3. Click Connect
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-mobile-alt"></i> Run on Device</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Connected Devices</label>
+                        <button class="btn btn-sm btn-secondary" onclick="refreshDevices()" style="margin-left:8px;">
+                            <i class="fas fa-sync"></i> Refresh
+                        </button>
+                        <div id="connectedDevices">
+                            <p class="text-muted">No devices connected</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Device</label>
+                        <select class="form-control" id="deployDevice">
+                            <option value="">No devices available</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-success w-100" onclick="deployToDevice()">
+                        <i class="fas fa-play"></i> Deploy to Device
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-desktop"></i> Run on Emulator</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Available Emulators</label>
+                        <select class="form-control" id="deployEmulator">
+                            <option value="">No emulators available</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-info w-100" onclick="deployToEmulator()">
+                        <i class="fas fa-play"></i> Run on Emulator
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-cloud-upload-alt"></i> Build & Deploy</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Platform</label>
+                        <select class="form-control" id="deployPlatform">
+                            <option value="android">🤖 Android</option>
+                            <option value="ios">🍎 iOS (macOS only)</option>
+                            <option value="windows">🪟 Windows</option>
+                            <option value="browser">🌐 Browser</option>
+                            <option value="electron">⚡ Electron</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Build Configuration</label>
+                        <div class="deploy-options" style="display:flex; gap:16px;">
+                            <label class="deploy-option" style="display:flex; align-items:center; gap:4px;">
+                                <input type="radio" name="deployConfig" value="debug" checked>
+                                <span>Debug</span>
+                            </label>
+                            <label class="deploy-option" style="display:flex; align-items:center; gap:4px;">
+                                <input type="radio" name="deployConfig" value="release">
+                                <span>Release</span>
+                            </label>
+                            <label class="deploy-option" style="display:flex; align-items:center; gap:4px;">
+                                <input type="radio" name="deployConfig" value="profile">
+                                <span>Profile</span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary w-100" onclick="buildAndDeploy()">
+                        <i class="fas fa-hammer"></i> Build & Deploy
+                    </button>
+                    <div id="deployOutput" class="deploy-output" style="margin-top:12px;">
+                        <h4 style="font-size:14px; margin-bottom:4px;">Deployment Log</h4>
+                        <pre id="deployLog" style="background:#0f172a; color:#e2e8f0; padding:12px; border-radius:8px; font-size:12px; max-height:150px; overflow-y:auto; white-space:pre-wrap; word-wrap:break-word;">Ready for deployment...</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

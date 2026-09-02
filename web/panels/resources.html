@@ -1,0 +1,89 @@
+<section class="panel" id="panel-resources">
+    <div class="panel-header">
+        <h2><i class="fas fa-images"></i> Resource Management</h2>
+        <p>Manage app icons, splash screens, and other resources</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-icons"></i> App Icons</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Icon Image</label>
+                        <div class="resource-drop-zone" id="iconDropZone" style="border:2px dashed var(--border); border-radius:8px; padding:30px; text-align:center; cursor:pointer; transition:var(--transition);">
+                            <i class="fas fa-cloud-upload-alt" style="font-size:32px; display:block; margin-bottom:8px; color:var(--primary);"></i>
+                            <p>Drag & drop or click to select icon image</p>
+                            <span class="text-muted" style="font-size:12px;">Recommended: 1024x1024 PNG</span>
+                            <div id="iconFileName" style="margin-top:12px; font-weight:500; color:var(--success); display:none;"></div>
+                        </div>
+                        <input type="file" id="iconFileInput" accept="image/*" style="display:none;">
+                    </div>
+                    <button class="btn btn-success w-100" id="generateIconsBtn">
+                        <i class="fas fa-magic"></i> Generate Icons
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-image"></i> Splash Screens</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Splash Image</label>
+                        <div class="resource-drop-zone" id="splashDropZone" style="border:2px dashed var(--border); border-radius:8px; padding:30px; text-align:center; cursor:pointer; transition:var(--transition);">
+                            <i class="fas fa-cloud-upload-alt" style="font-size:32px; display:block; margin-bottom:8px; color:var(--primary);"></i>
+                            <p>Drag & drop or click to select splash image</p>
+                            <span class="text-muted" style="font-size:12px;">Recommended: 2208x2208 PNG</span>
+                            <div id="splashFileName" style="margin-top:12px; font-weight:500; color:var(--success); display:none;"></div>
+                        </div>
+                        <input type="file" id="splashFileInput" accept="image/*" style="display:none;">
+                    </div>
+                    <button class="btn btn-success w-100" id="generateSplashBtn">
+                        <i class="fas fa-magic"></i> Generate Splash Screens
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-3">
+        <div class="col-9">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-info-circle"></i> How It Works</h3>
+                </div>
+                <div class="card-body">
+                    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; text-align:center;">
+                        <div style="padding:16px; background:var(--bg-tertiary); border-radius:8px;">
+                            <i class="fas fa-image" style="font-size:32px; color:var(--primary);"></i>
+                            <h4 style="margin:8px 0 4px;">1. Select Image</h4>
+                            <p style="font-size:13px; color:var(--text-secondary);">Choose your icon or splash image</p>
+                        </div>
+                        <div style="padding:16px; background:var(--bg-tertiary); border-radius:8px;">
+                            <i class="fas fa-magic" style="font-size:32px; color:var(--success);"></i>
+                            <h4 style="margin:8px 0 4px;">2. Generate</h4>
+                            <p style="font-size:13px; color:var(--text-secondary);">Click generate button</p>
+                        </div>
+                        <div style="padding:16px; background:var(--bg-tertiary); border-radius:8px;">
+                            <i class="fas fa-check-circle" style="font-size:32px; color:var(--success);"></i>
+                            <h4 style="margin:8px 0 4px;">3. Done!</h4>
+                            <p style="font-size:13px; color:var(--text-secondary);">config.xml updated automatically ✅</p>
+                        </div>
+                    </div>
+                    <div style="margin-top:16px; padding:12px; background:var(--bg-success); border-radius:6px; border:1px solid var(--success);">
+                        <i class="fas fa-check-circle" style="color:var(--success);"></i>
+                        <strong>No manual configuration needed!</strong> config.xml is updated automatically with all required entries.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>

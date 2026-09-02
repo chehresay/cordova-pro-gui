@@ -1,0 +1,88 @@
+<section class="panel" id="panel-project">
+    <div class="panel-header">
+        <h2><i class="fas fa-folder-open"></i> Project Manager</h2>
+        <p>Create, open, and manage your Cordova projects</p>
+    </div>
+
+    <div class="row">
+        <div class="col-7">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-plus"></i> Create New Project</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Project Name</label>
+                        <input type="text" class="form-control" id="projectName" placeholder="MyApp">
+                    </div>
+                    <div class="form-group">
+                        <label>Package ID</label>
+                        <input type="text" class="form-control" id="packageId" placeholder="com.example.myapp">
+                        <small class="text-muted">Format: com.yourcompany.yourapp</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Version</label>
+                        <input type="text" class="form-control" id="projectVersion" value="1.0.0">
+                    </div>
+                    <div class="form-group">
+                        <label>Project Path</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="projectPath" placeholder="C:/Projects">
+                            <button class="btn btn-outline" onclick="selectFolder()">
+                                <i class="fas fa-folder-open"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Template</label>
+                        <div class="template-selector">
+                            <div class="template-option active" data-template="empty">
+                                <i class="fas fa-file"></i>
+                                <span>Empty</span>
+                            </div>
+                            <div class="template-option" data-template="tabs">
+                                <i class="fas fa-columns"></i>
+                                <span>Tabs</span>
+                            </div>
+                            <div class="template-option" data-template="sidebar">
+                                <i class="fas fa-bars"></i>
+                                <span>Sidebar</span>
+                            </div>
+                            <div class="template-option" data-template="material">
+                                <i class="fas fa-palette"></i>
+                                <span>Material</span>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-lg" onclick="createProjectFromPanel()">
+                        <i class="fas fa-plus"></i> Create Project
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-5">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-info-circle"></i> Project Info</h3>
+                </div>
+                <div class="card-body" id="projectInfo">
+                    <div class="empty-state">
+                        <i class="fas fa-folder-open"></i>
+                        <p>No project loaded</p>
+                        <span class="text-muted">Create or open a project to see details</span>
+                    </div>
+                </div>
+            </div>
+            <div class="card mt-3">
+                <div class="card-header">
+                    <h3><i class="fas fa-folder"></i> Open Project</h3>
+                </div>
+                <div class="card-body">
+                    <button class="btn btn-success w-100" onclick="openProject()">
+                        <i class="fas fa-folder-open"></i> Open Existing Project
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,49 @@
+<section class="panel" id="panel-console">
+    <div class="panel-header">
+        <h2><i class="fas fa-terminal"></i> Console</h2>
+        <p>Run custom commands and view execution logs</p>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div class="console-toolbar">
+                <div class="input-group" style="display:flex; gap:8px; margin-bottom:8px;">
+                    <input type="text" class="form-control" id="consoleCommand" 
+                           placeholder="Enter command... (e.g., cordova platform list)">
+                    <button class="btn btn-primary" onclick="runConsoleCommand()">
+                        <i class="fas fa-play"></i> Run
+                    </button>
+                    <button class="btn btn-warning" onclick="clearConsole()">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+                <div class="console-quick-commands" style="display:flex; gap:8px; flex-wrap:wrap;">
+                    <span class="quick-cmd" onclick="quickCommand('cordova platform list')" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:12px; font-family:monospace;">
+                        <i class="fas fa-list"></i> Platforms
+                    </span>
+                    <span class="quick-cmd" onclick="quickCommand('cordova plugin list')" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:12px; font-family:monospace;">
+                        <i class="fas fa-puzzle-piece"></i> Plugins
+                    </span>
+                    <span class="quick-cmd" onclick="quickCommand('cordova info')" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:12px; font-family:monospace;">
+                        <i class="fas fa-info-circle"></i> Info
+                    </span>
+                    <!--
+                    <span class="quick-cmd" onclick="quickCommand('cordova clean')" style="cursor:pointer; padding:4px 12px; background:var(--bg-tertiary); border-radius:16px; font-size:12px; font-family:monospace;">
+                        <i class="fas fa-broom"></i> Clean
+                    </span>
+                    -->
+                </div>
+            </div>
+            <div class="console-output" id="consoleOutput" style="background:#0f172a; color:#e2e8f0; padding:16px; border-radius:8px; height:300px; overflow-y:auto; font-family:'Consolas','Monaco',monospace; font-size:13px; line-height:1.6;">
+                <div class="console-line info">
+                    <span class="console-time">[System]</span>
+                    <span>Cordova Pro GUI initialized</span>
+                </div>
+                <div class="console-line info">
+                    <span class="console-time">[System]</span>
+                    <span>Ready for commands</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

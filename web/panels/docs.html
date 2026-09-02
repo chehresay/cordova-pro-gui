@@ -1,0 +1,119 @@
+<section class="panel" id="panel-docs">
+    <div class="panel-header">
+        <h2><i class="fas fa-book"></i> Documentation</h2>
+        <p>Complete guide and documentation for Cordova Pro GUI</p>
+    </div>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="doc-sidebar">
+                <div class="doc-nav-item active" onclick="showDocSection('getting-started')">
+                    <i class="fas fa-rocket"></i> Getting Started
+                </div>
+                <div class="doc-nav-item" onclick="showDocSection('project-management')">
+                    <i class="fas fa-folder-open"></i> Project Management
+                </div>
+                <div class="doc-nav-item" onclick="showDocSection('platforms')">
+                    <i class="fas fa-mobile-alt"></i> Platforms
+                </div>
+                <div class="doc-nav-item" onclick="showDocSection('plugins')">
+                    <i class="fas fa-puzzle-piece"></i> Plugins
+                </div>
+                <div class="doc-nav-item" onclick="showDocSection('building')">
+                    <i class="fas fa-hammer"></i> Building
+                </div>
+                <div class="doc-nav-item" onclick="showDocSection('configuration')">
+                    <i class="fas fa-cog"></i> Configuration
+                </div>
+                <div class="doc-nav-item" onclick="showDocSection('faq')">
+                    <i class="fas fa-question-circle"></i> FAQ
+                </div>
+                <div class="doc-nav-item" onclick="showDocSection('about')">
+                    <i class="fas fa-user"></i> About
+                </div>
+                <div class="doc-nav-item" onclick="showDocSection('donations')">
+                    <i class="fas fa-heart"></i> Donations
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="card">
+                <div class="card-body doc-content" id="docContent" style="font-size:15px; line-height:1.8;">
+                    <h1>Welcome to Cordova Pro GUI</h1>
+                    <p>A professional, user-friendly interface for Cordova project management.</p>
+                    
+                    <h2>Quick Start</h2>
+                    <ol>
+                        <li><strong>Create a new project</strong> - Use the Project Manager panel</li>
+                        <li><strong>Add platforms</strong> - Android, iOS, Windows, etc.</li>
+                        <li><strong>Install plugins</strong> - Add functionality to your app</li>
+                        <li><strong>Build & Run</strong> - Build and test your app</li>
+                    </ol>
+                    
+                    <h2>Features</h2>
+                    <ul>
+                        <li><strong>Project Management</strong> - Create, open, and manage projects</li>
+                        <li><strong>Platform Management</strong> - Add/remove platforms easily</li>
+                        <li><strong>Plugin Management</strong> - Install/uninstall plugins</li>
+                        <li><strong>Config Editor</strong> - Visual config.xml editing</li>
+                        <li><strong>Build System</strong> - Build and run your apps</li>
+                        <li><strong>Modern UI</strong> - Clean, responsive, and user-friendly</li>
+                        <li><strong>Dark/Light Mode</strong> - Switch between themes</li>
+                    </ul>
+                    
+                    <div class="about-section" style="background:var(--bg-secondary); padding:16px; border-radius:8px; margin-top:24px; border-left:4px solid var(--primary);">
+                        <h2 style="margin-top:0;"><i class="fas fa-user" style="color:var(--primary);"></i> About the Author</h2>
+                        <div style="display:flex; align-items:center; gap:16px; flex-wrap:wrap;">
+                            <div style="flex:1;">
+                                <h3 style="margin:0; font-size:18px;">Morad Chehresay</h3>
+                                <p style="margin:4px 0; color:var(--text-secondary);">
+                                    <i class="fas fa-envelope"></i> 
+                                    <a href="mailto:chehresay@gmail.com" style="color:var(--primary); text-decoration:none;">chehresay@gmail.com</a>
+                                </p>
+                                <p style="margin:4px 0; color:var(--text-secondary);">
+                                    <i class="fab fa-github"></i> 
+                                    <a href="https://github.com/chehresay" target="_blank" style="color:var(--primary); text-decoration:none;">github.com/chehresay</a>
+                                </p>
+                                <p style="margin:4px 0; color:var(--text-secondary);">
+                                    <i class="fab fa-linkedin"></i> 
+                                    <a href="https://linkedin.com/in/chehresay" target="_blank" style="color:var(--primary); text-decoration:none;">linkedin.com/in/chehresay</a>
+                                </p>
+                                <p style="margin:8px 0 0; font-size:14px; color:var(--text-secondary);">
+                                    <i class="fas fa-code"></i> 
+                                    Developer &amp; Open Source Enthusiast
+                                </p>
+                            </div>
+                            <div style="text-align:center; padding:12px 20px; background:var(--bg-tertiary); border-radius:8px;">
+                                <i class="fas fa-crown" style="font-size:24px; color:var(--warning);"></i>
+                                <p style="margin:4px 0 0; font-size:12px; color:var(--text-secondary);">Creator of<br><strong>Cordova Pro GUI</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="donation-section" style="background:var(--bg-secondary); padding:16px; border-radius:8px; margin-top:16px;">
+                        <h2><i class="fas fa-heart" style="color:#ef4444;"></i> Support the Project</h2>
+                        <p>If you find this tool useful, consider supporting its development:</p>
+                        <div class="donation-addresses" style="margin-top:8px;">
+                            <div class="donation-item" style="display:flex; align-items:center; gap:8px; padding:4px 0; flex-wrap:wrap;">
+                                <i class="fab fa-bitcoin" style="color:#f7931a; font-size:20px;"></i>
+                                <span class="donation-label">Bitcoin (BTC):</span>
+                                <code style="background:var(--bg-primary); padding:2px 8px; border-radius:4px; font-size:13px; word-break:break-all;">bc1q0r3gzt5xtlglerst36vh6567023thpv5huthrl</code>
+                                <button class="btn btn-sm btn-outline" onclick="copyAddress('bc1q0r3gzt5xtlglerst36vh6567023thpv5huthrl')">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                            <div class="donation-item" style="display:flex; align-items:center; gap:8px; padding:4px 0; flex-wrap:wrap;">
+                                <i class="fab fa-ethereum" style="color:#627eea; font-size:20px;"></i>
+                                <span class="donation-label">Ethereum (ETH):</span>
+                                <code style="background:var(--bg-primary); padding:2px 8px; border-radius:4px; font-size:13px; word-break:break-all;">0xd77935cb0f1b03054720de9cb94c3d7df12b9d0e</code>
+                                <button class="btn btn-sm btn-outline" onclick="copyAddress('0xd77935cb0f1b03054720de9cb94c3d7df12b9d0e')">
+                                    <i class="fas fa-copy"></i> Copy
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,93 @@
+<section class="panel" id="panel-build">
+    <div class="panel-header">
+        <h2><i class="fas fa-hammer"></i> Build Manager</h2>
+        <p>Build your Cordova project for production or debugging</p>
+    </div>
+
+    <div class="row">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-wrench"></i> Build Settings</h3>
+                </div>
+                <div class="card-body">
+                    <!-- ===== KEYSTORE STATUS ===== -->
+                    <div id="buildKeystoreStatus" style="padding:8px 12px; background:var(--bg-tertiary); border-radius:6px; margin-bottom:12px; font-size:13px; display:flex; justify-content:space-between; align-items:center;">
+                        <span>
+                            <i class="fas fa-key"></i> 
+                            <span id="buildKeystoreLabel">No keystore configured</span>
+                        </span>
+                        <a href="#" onclick="navigateTo('settings')" style="color:var(--primary); text-decoration:none; font-size:12px;">
+                            <i class="fas fa-cog"></i> Configure
+                        </a>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Platform</label>
+                        <select class="form-control" id="buildPlatform">
+                            <option value="android">🤖 Android</option>
+                            <option value="ios">🍎 iOS (macOS only)</option>
+                            <option value="windows">🪟 Windows</option>
+                            <option value="browser">🌐 Browser</option>
+                            <option value="electron">⚡ Electron</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Build Type</label>
+                        <select class="form-control" id="buildType" onchange="updateBuildFlags()">
+                            <option value="debug">Debug</option>
+                            <option value="release">Release</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Additional Flags</label>
+                        <input type="text" class="form-control" id="buildFlags" placeholder="-- --keystore=...">
+                        <small class="text-muted">
+                            <i class="fas fa-info-circle"></i> 
+                            For release builds, keystore from Settings will be auto-injected
+                        </small>
+                    </div>
+                    
+                    <!-- ===== BUILD BUTTONS ===== -->
+                    <div style="display:flex; gap:8px;">
+                        <button class="btn btn-primary" onclick="buildProject()" style="flex:1;">
+                            <i class="fas fa-hammer"></i> Build
+                        </button>
+                        <button class="btn btn-success" onclick="buildAndRun()" style="flex:1;">
+                            <i class="fas fa-play"></i> Build & Run
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-play"></i> Run & Deploy</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Target</label>
+                        <select class="form-control" id="runTarget">
+                            <option value="device">Physical Device</option>
+                            <option value="emulator">Emulator</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-success w-100" onclick="runApp()">
+                        <i class="fas fa-play"></i> Run App
+                    </button>
+                    <button class="btn btn-info w-100 mt-2" onclick="emulateApp()">
+                        <i class="fas fa-desktop"></i> Emulate
+                    </button>
+                    <button class="btn btn-secondary w-100 mt-2" onclick="cleanAndBuild()">
+                        <i class="fas fa-broom"></i> Clean & Build
+                    </button>
+                    <div class="build-output" style="margin-top:12px;">
+                        <h4 style="font-size:14px; margin-bottom:4px;">Build Output</h4>
+                        <pre id="buildLog" style="background:#0f172a; color:#e2e8f0; padding:12px; border-radius:8px; font-size:12px; max-height:150px; overflow-y:auto; white-space:pre-wrap; word-wrap:break-word;">No builds yet</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
