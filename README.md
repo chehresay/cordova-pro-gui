@@ -206,9 +206,9 @@ The dashboard provides an overview of your projects, recent activity, and quick 
 ```
 cordova-pro-gui/
 ├── main.py              # Main application entry point
-├── script.js            # Frontend JavaScript
-├── index.html           # Main HTML
 ├── web/                 # Web assets
+│   ├── script.js            # Frontend JavaScript
+│   ├── index.html           # Main HTML
 │   ├── css/             # Stylesheets
 │   ├── panels/          # Panel HTML files
 │   └── panels/navigation.json
@@ -269,7 +269,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE.md) f
 - 📧 Email: [chehresay@gmail.com](mailto:chehresay@gmail.com)
 - 🐙 GitHub: [@chehresay](https://github.com/chehresay)
 - 🔗 LinkedIn: [chehresay](https://linkedin.com/in/chehresay)
-- 🐦 Twitter: [@chehresay](https://twitter.com/chehresay)
 
 ---
 
